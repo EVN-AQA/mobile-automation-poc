@@ -1,7 +1,6 @@
 package com.epam.qavn.core;
 
 import com.epam.qavn.exception.UnknownPlatformException;
-import com.epam.qavn.utils.AppiumServer;
 import io.appium.java_client.AppiumDriver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,12 +14,6 @@ public abstract class AbstractTest {
     protected static AppiumDriver driver;
     private final DriverFactory driverFactory = new DriverFactory();
 
-    @BeforeSuite
-    public void startServerAndDevice() {
-        logger.info("Before suite: start Appium server and launch Emulator");
-        AppiumServer.getInstance().start();
-    }
-
     @Parameters("device")
     @BeforeTest
     public void setUp(String deviceName) throws UnknownPlatformException {
@@ -31,20 +24,5 @@ public abstract class AbstractTest {
     @AfterTest
     public void tearDown() {
         driverFactory.removeDriver();
-    }
-
-    @AfterSuite
-    public void shutdownServerAndDevice() {
-        logger.info("After suite: shutdown Appium server and close Emulator");
-        AppiumServer.getInstance().stop();
-        closeEmulator();
-    }
-
-    public void closeEmulator() {
-        try {
-            Runtime.getRuntime().exec("adb -s emulator-5554 emu kill");
-        } catch (IOException e) {
-            logger.info("Close emulator failed!");
-        }
     }
 }

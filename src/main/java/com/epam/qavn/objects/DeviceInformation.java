@@ -6,32 +6,26 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-@JsonPropertyOrder({"name", "avdName", "platformName", "platformVersion"})
+@JsonPropertyOrder({ "name", "platformName", "platformVersion", "udid"})
 public class DeviceInformation {
 
     private String name;
-    private String avdName;
     private String platformName;
     private String platformVersion;
+    private String udid;
 
     public DeviceInformation(JsonObject jsonObject) {
         Gson gson = new Gson();
         this.name = gson.fromJson(jsonObject, DeviceInformation.class).getName();
-        this.avdName = gson.fromJson(jsonObject, DeviceInformation.class).getAvdName();
         this.platformName = gson.fromJson(jsonObject, DeviceInformation.class).getPlatformName();
         this.platformVersion = gson.fromJson(jsonObject, DeviceInformation.class).getPlatformVersion();
+        this.udid = gson.fromJson(jsonObject, DeviceInformation.class).getUDID();
     }
 
     @JsonProperty("name")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getName() {
         return name;
-    }
-
-    @JsonProperty("avdName")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    public String getAvdName() {
-        return avdName;
     }
 
     @JsonProperty("platformName")
@@ -44,5 +38,11 @@ public class DeviceInformation {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getPlatformVersion() {
         return platformVersion;
+    }
+
+    @JsonProperty("udid")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public String getUDID() {
+        return udid;
     }
 }

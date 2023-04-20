@@ -29,8 +29,9 @@ public class AndroidDriverManager extends DriverManager {
             desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, device.getName());
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
             desiredCapabilities.setCapability(MobileCapabilityType.APP, appPath);
-            desiredCapabilities.setCapability("avd", device.getAvdName());
             desiredCapabilities.setCapability("appWaitActivity", "*");
+            desiredCapabilities.setCapability("appActivity", "com.wdiodemoapp.MainActivity");
+            desiredCapabilities.setCapability("appPackage", "com.wdiodemoapp");
             URL url = new URL("http://127.0.0.1:4723/wd/hub");
             driver = new AndroidDriver(url, desiredCapabilities);
             logger.info("initiated Android driver for device " + device.getName());
