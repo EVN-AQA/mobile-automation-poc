@@ -1,13 +1,20 @@
 {
   "android_11": {
-    "name": "emulator-5554",
-    "avdName": "Pixel_4_XL_API_30",
     "platformName": "Android",
-    "platformVersion": "11.0"
+    "platformVersion": "11",
+    "name": "Pixel 6",
+    "udid": "emulator-5554"
   },
-  "ios_10": {
-    "name": "iPhone Simulator",
+  "android_9": {
+    "platformName": "Android",
+    "platformVersion": "9",
+    "name": "Pixel 6 pro",
+    "udid": "emulator-5554"
+  },
+  "ios_14": {
     "platformName": "IOS",
-    "platformVersion": "9.0"
+    "platformVersion": "16.4",
+    "name": "iPhone 14 Pro Max",
+    "udid": "011A9EF4-428B-426C-9A97-C5FF9F6C7177"
   }
 }
